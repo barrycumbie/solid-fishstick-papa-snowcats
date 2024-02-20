@@ -5,6 +5,14 @@
 <p>I\'m Logan Beckman.
     
 
+    <p><%= myResultClient.length %></p>
+
+    <% for (var i=0; i< myResultClient.length; i++ ) { %>
+    
+        <li> <%= myResultClient[i].userName %> </li>
+    
+    <% } %> 
+
     
 <li> I be <%= myTypeClient %>, good at mullet, bad at stop talking.</p>
 
@@ -19,3 +27,6 @@
 </footer>
 
 <button class="btn btn-primary">boostrap working?</button>
+
+
+<%- include('partials/html-end.ejs') %>
