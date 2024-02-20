@@ -4,7 +4,6 @@ const app = express()
 const port = process.env.PORT || 5500;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser')
-
 // set the view engine to ejs
 let path = require('path');
 app.set('view engine', 'ejs');
@@ -49,9 +48,7 @@ app.get('/read', async (req,res) => {
 
   let myResultServer = await run(); 
 
-  console.log("myResultServer:", myResultServer[0].userName);
-
-
+  console.log("myResultServer:", myResultServer);
 
   res.render('index', {
     myTypeClient: myTypeServer,
@@ -75,15 +72,26 @@ app.get('/', function(req, res) {
   
 });
 
+app.get('/name', (req,res) => {
+
+  console.log("in get to slash name:", req.query.ejsFormName); 
+  myTypeServer = req.query.ejsFormName; 
+
+  res.render('index', {
+    myTypeClient: myTypeServer,
+    myResultClient: "myResultServer"
+
+  });
+
+  
+})
+
+
 
 app.get('/send', function (req, res) {
   
     res.send('Hello World from Express <br><a href="/">home</a>')
 })
-
-
-
-// app.listen(3000)
 
 app.listen(port, () => {
 console.log(`papa app listening on port ${port}`)
