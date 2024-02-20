@@ -4,7 +4,6 @@ const app = express()
 const port = process.env.PORT || 5500;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser')
-=======
 
 // set the view engine to ejs
 let path = require('path');
