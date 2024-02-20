@@ -4,6 +4,7 @@ const app = express()
 const port = process.env.PORT || 5500;
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const bodyParser = require('body-parser')
+=======
 
 // set the view engine to ejs
 let path = require('path');
@@ -36,6 +37,7 @@ async function run() {
 
     return result; 
 
+    await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
@@ -60,6 +62,8 @@ app.get('/read', async (req,res) => {
 
 
 }); 
+run().catch(console.dir);
+
 
 
 app.get('/', function(req, res) {
@@ -83,5 +87,5 @@ app.get('/send', function (req, res) {
 // app.listen(3000)
 
 app.listen(port, () => {
-  console.log(`papa app listening on port ${port}`)
+console.log(`papa app listening on port ${port}`)
 })
