@@ -48,9 +48,7 @@ app.get('/read', async (req,res) => {
 
   let myResultServer = await run(); 
 
-  console.log("myResultServer:", myResultServer[0].userName);
-
-
+  console.log("myResultServer:", myResultServer);
 
   res.render('index', {
     myTypeClient: myTypeServer,
@@ -73,6 +71,21 @@ app.get('/', function(req, res) {
   });
   
 });
+
+app.get('/name', (req,res) => {
+
+  console.log("in get to slash name:", req.query.ejsFormName); 
+  myTypeServer = req.query.ejsFormName; 
+
+  res.render('index', {
+    myTypeClient: myTypeServer,
+    myResultClient: "myResultServer"
+
+  });
+
+  
+})
+
 
 
 app.get('/send', function (req, res) {
